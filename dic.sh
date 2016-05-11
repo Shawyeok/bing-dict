@@ -8,12 +8,12 @@ curl "http://cn.bing.com/dict/search?q=$word&go=Submit&qs=bs&form=Z9LH5" 2>/dev/
 		c=0;
 		print WORD;
 		for(i=1;i<=NF;i++) {
-			if(match($i, "^[a-z]+.|网络释义：$") != 0) {
+			if(match($i, "^[a-z]+\\.|网络释义：$") != 0) {
 				if(c==0) printf "\n";
-				print $i,$++i;
+				printf "\n";
 				c++;
-			} else {
-				print $i;
 			}
+			printf "%s ",$i;
 		}
+		printf "\n";
 	}'
