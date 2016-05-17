@@ -2,8 +2,8 @@
 
 word=$1
 curl "http://cn.bing.com/dict/search?q=$word&go=Submit&qs=bs&form=Z9LH5" 2>/dev/null |\
-	grep -Eo '<meta name="description" content="(.+) "/>' |\
-	sed -E 's/<meta name="description" content="必应词典为您提供.+的释义，(.+)"\/>/\1/' |\
+	grep -Eo '<meta name="description" content="(.+) " ?/>' |\
+	sed -E 's/<meta name="description" content="必应词典为您提供.+的释义，(.+)" ?\/>/\1/' |\
 	sed -E 's/(.*)(，)(.*)/\1 \3/' | awk -v WORD=$word '{
 		c=0;
 		print WORD;
