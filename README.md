@@ -1,5 +1,5 @@
 # bing-dict
-Bing dictionary(http://www.bing.com/dict) in command line.
+Bing dictionary(http://cn.bing.com/dict) in command line.
 
 ## Quickstart
 ```shell
