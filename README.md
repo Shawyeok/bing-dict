@@ -4,7 +4,7 @@ Bing dictionary(http://cn.bing.com/dict) in command line.
 ## Quickstart
 ```shell
     $ git clone 'https://github.com/Shawyeok/bing-dict.git'
-    $ sudo cp bing-dict/dic.sh /usr/local/bin/dic
+    $ sudo ln -sf "$PWD/bing-dict/dic.sh" /usr/local/bin/dic
     $ dic powerful
     powerful
     美['paʊrf(ə)l]，英['paʊə(r)f(ə)l]
