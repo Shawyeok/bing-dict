@@ -1,12 +1,23 @@
 #!/bin/bash
 
-word=$1
-curl -SsL "http://cn.bing.com/dict/search?q=$word" |\
+function printUsage() {
+	cat <<EOF
+Usage: dic <word[s]>
+EOF
+}
+
+if [ $# -eq 0 ]; then
+	printUsage
+	exit 1
+fi
+
+query="$@"
+curl -sSLG "http://cn.bing.com/dict/search" --data-urlencode "q=$query" |\
 	grep -Eo '<meta name="description" content="(.+) " ?/>' |\
 	sed -E 's/<meta name="description" content="必应词典为您提供.+的释义，(.+)" ?\/>/\1/' |\
-	sed -E 's/(.*)(，)(.*)/\1 \3/' | awk -v WORD=$word '{
+	sed -E 's/(.*)(，)(.*)/\1 \3/' | awk -v "QUERY=$query" '{
 		c=0;
-		print WORD;
+		print QUERY;
 		for(i=1;i<=NF;i++) {
 			if(match($i, "^[a-z]+\\.|网络释义：$") != 0) {
 				if(c==0) printf "\n";

@@ -3,8 +3,8 @@
 PRGDIR=`dirname $0`
 EXEC="../dic.sh"
 
-for word in `cat "$PRGDIR"/"./words.txt"`; do
-	echo "----<< $word >>----"
-	sh "$PRGDIR"/"$EXEC" "$word"
+while read query; do
+	echo "----<< $query >>----"
+	sh "$PRGDIR"/"$EXEC" "$query"
 	echo
-done
+done < "$PRGDIR/./words.txt"

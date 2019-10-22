@@ -4,3 +4,5 @@ docker
 laptop
 pc
 computer
+rain man
+shell script
