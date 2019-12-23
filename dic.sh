@@ -28,3 +28,7 @@ curl -sSLG "http://cn.bing.com/dict/search" --data-urlencode "q=$query" |\
 		}
 		printf "\n";
 	}'
+
+if [ ${DISABLE_DIC_HISTORY:-0} -ne 1 ]; then
+	echo "$(date +%Y-%m-%dT%H:%M:%S) $@" >> $HOME/.dic_history
+fi
