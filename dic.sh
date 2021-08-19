@@ -12,7 +12,7 @@ if [ $# -eq 0 ]; then
 fi
 
 query="$@"
-curl -sSLG "http://cn.bing.com/dict/search" --data-urlencode "q=$query" |\
+curl -sSLG "https://cn.bing.com/dict/search" --data-urlencode "q=$query" |\
 	grep -Eo '<meta name="description" content="(.+) " ?/>' |\
 	sed -E 's/<meta name="description" content="必应词典为您提供.+的释义，(.+)" ?\/>/\1/' |\
 	sed -E 's/(.*)(，)(.*)/\1 \3/' | awk -v "QUERY=$query" '{
